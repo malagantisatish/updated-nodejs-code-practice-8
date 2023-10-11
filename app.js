@@ -126,7 +126,7 @@ app.put("/todos/:todoId/", async (request, response) => {
   UPDATE todo SET todo='${todo}',status='${status}',priority='${priority}'
   WHERE id=${todoId};`;
   await db.run(updateTodoQuery);
-  response.send("Todo Updated");
+  response.send(`${updateColumn} Updated`);
 });
 
 //api-5
@@ -136,7 +136,7 @@ app.delete("/todos/:todoId/", async (request, response) => {
   const deleteQuery = `
     DELETE FROM todo WHERE id=${todoId};`;
   await db.run(deleteQuery);
-  response.send("Todo Delete");
+  response.send("Todo Deleted");
 });
 
 module.exports = app;
